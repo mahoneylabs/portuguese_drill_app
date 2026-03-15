@@ -1,101 +1,110 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Portuguese Verb Trainer</title>
 
 <style>
+
 body{
-  font-family: Arial, sans-serif;
-  background:#f7f7f7;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  margin:0;
+font-family: Arial, sans-serif;
+background:#f7f7f7;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
 }
 
 .container{
-  background:white;
-  padding:40px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.1);
-  text-align:center;
-  width:540px;
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+text-align:center;
+width:560px;
 }
 
-h1{ color:#58cc02; }
+h1{
+color:#58cc02;
+margin-top:0;
+}
 
 button{
-  background:#58cc02;
-  color:white;
-  border:none;
-  padding:10px 18px;
-  font-size:16px;
-  border-radius:8px;
-  cursor:pointer;
-  margin-top:15px;
+background:#58cc02;
+color:white;
+border:none;
+padding:10px 18px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
 }
 
-button:hover{ background:#46a302; }
+button:hover{
+background:#46a302;
+}
 
 .conjugation-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  margin-top:20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+margin-top:25px;
 }
 
 .column{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
+display:flex;
+flex-direction:column;
+gap:14px;
 }
 
 .row{
-  display:flex;
-  align-items:center;
-  gap:8px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 
 label{
-  width:120px;
-  text-align:left;
-  font-weight:bold;
+width:130px;
+text-align:left;
+font-weight:bold;
 }
 
 input{
-  padding:8px;
-  font-size:14px;
-  width:130px;
-  border:2px solid #ccc;
-  border-radius:6px;
+padding:8px;
+font-size:14px;
+width:140px;
+border:2px solid #ccc;
+border-radius:6px;
 }
 
 .correct{
-  background:#d7ffd9;
-  border-color:#58cc02;
+background:#d7ffd9;
+border-color:#58cc02;
 }
 
 .incorrect{
-  background:#ffd9d9;
-  border-color:#ff4b4b;
+background:#ffd9d9;
+border-color:#ff4b4b;
 }
 
 .result-icon{
-  width:18px;
-  font-size:18px;
+font-size:18px;
+width:20px;
 }
 
 .correct-answer{
-  font-size:12px;
-  color:#ff4b4b;
+font-size:12px;
+color:#ff4b4b;
+margin-left:4px;
 }
 
 #result{
-  margin-top:20px;
-  font-weight:bold;
-  font-size:18px;
+margin-top:22px;
+font-weight:bold;
+font-size:18px;
 }
+
 </style>
 
 </head>
