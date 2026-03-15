@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 <title>Portuguese Verb Trainer</title>
 
 <style>
@@ -23,7 +22,7 @@ padding:40px;
 border-radius:12px;
 box-shadow:0 6px 18px rgba(0,0,0,0.1);
 text-align:center;
-width:500px;
+width:520px;
 }
 
 h1{
@@ -72,14 +71,20 @@ font-weight:bold;
 input{
 padding:8px;
 font-size:14px;
-width:150px;
+width:160px;
 border:2px solid #ddd;
 border-radius:6px;
+transition:.2s;
 }
 
-input:focus{
-outline:none;
+.correct{
 border-color:#58cc02;
+background:#e9ffd9;
+}
+
+.incorrect{
+border-color:#ff4b4b;
+background:#ffe3e3;
 }
 
 #result{
@@ -88,7 +93,6 @@ font-weight:bold;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -100,7 +104,6 @@ font-weight:bold;
 <button onclick="newVerb()">New Verb</button>
 
 <h2 id="verb"></h2>
-
 <h3 id="translation"></h3>
 
 <div class="conjugation-grid">
@@ -154,5 +157,4 @@ font-weight:bold;
 <script src="script.js"></script>
 
 </body>
-
 </html>
