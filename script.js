@@ -1,6 +1,15 @@
 let verbs=[]
 let currentVerb
 
+let wrongCounts={
+eu:0,
+tu:0,
+ele:0,
+nos:0,
+vos:0,
+eles:0
+}
+
 fetch("verbs.json")
 .then(res=>res.json())
 .then(data=>verbs=data)
@@ -13,6 +22,8 @@ document.getElementById("verb").innerText=currentVerb.verb
 document.getElementById("translation").innerText="Translation: "+currentVerb.translation
 
 resetInputs()
+
+document.getElementById("result").innerText=""
 
 document.getElementById("eu").focus()
 
@@ -33,9 +44,9 @@ input.classList.remove("incorrect")
 document.getElementById(id+"-icon").innerText=""
 document.getElementById(id+"-correct").innerText=""
 
-})
+wrongCounts[id]=0
 
-document.getElementById("result").innerText=""
+})
 
 }
 
@@ -46,7 +57,6 @@ return text.trim().toLowerCase()
 function checkAnswer(){
 
 let ids=["eu","tu","ele","nos","vos","eles"]
-
 let score=0
 
 ids.forEach(id=>{
@@ -54,24 +64,33 @@ ids.forEach(id=>{
 let input=document.getElementById(id)
 
 let userAnswer=normalize(input.value)
-
 let correctAnswer=normalize(currentVerb[id])
 
 if(userAnswer===correctAnswer){
 
+input.classList.remove("incorrect")
 input.classList.add("correct")
 
 document.getElementById(id+"-icon").innerText="✔"
+
+wrongCounts[id]=0
 
 score++
 
 }else{
 
+input.classList.remove("correct")
 input.classList.add("incorrect")
 
 document.getElementById(id+"-icon").innerText="✖"
 
+wrongCounts[id]++
+
+if(wrongCounts[id]>=3){
+
 document.getElementById(id+"-correct").innerText="Correct: "+currentVerb[id]
+
+}
 
 }
 
