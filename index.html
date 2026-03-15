@@ -23,6 +23,7 @@ border-radius:12px;
 box-shadow:0 6px 18px rgba(0,0,0,0.1);
 text-align:center;
 width:560px;
+box-sizing:border-box;
 }
 
 h1{
@@ -48,7 +49,7 @@ background:#46a302;
 .conjugation-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:30px;
+gap:25px;
 margin-top:25px;
 }
 
@@ -59,23 +60,24 @@ gap:14px;
 }
 
 .row{
-display:flex;
+display:grid;
+grid-template-columns:140px 130px 25px 1fr;
 align-items:center;
-gap:10px;
+gap:6px;
 }
 
 label{
-width:130px;
-text-align:left;
 font-weight:bold;
+text-align:left;
 }
 
 input{
 padding:8px;
 font-size:14px;
-width:140px;
 border:2px solid #ccc;
 border-radius:6px;
+width:100%;
+box-sizing:border-box;
 }
 
 .correct{
@@ -90,13 +92,13 @@ border-color:#ff4b4b;
 
 .result-icon{
 font-size:18px;
-width:20px;
+text-align:center;
 }
 
 .correct-answer{
 font-size:12px;
 color:#ff4b4b;
-margin-left:4px;
+text-align:left;
 }
 
 #result{
