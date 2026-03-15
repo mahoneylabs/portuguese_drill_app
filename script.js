@@ -57,6 +57,7 @@ return text.trim().toLowerCase()
 function checkAnswer(){
 
 let ids=["eu","tu","ele","nos","vos","eles"]
+
 let score=0
 
 ids.forEach(id=>{
@@ -72,8 +73,6 @@ input.classList.remove("incorrect")
 input.classList.add("correct")
 
 document.getElementById(id+"-icon").innerText="✔"
-
-wrongCounts[id]=0
 
 score++
 
@@ -96,8 +95,7 @@ document.getElementById(id+"-correct").innerText="Correct: "+currentVerb[id]
 
 })
 
-document.getElementById("result").innerText=
-"You got "+score+" out of 6 correct"
+document.getElementById("result").innerText="You got "+score+" out of 6 correct"
 
 }
 
