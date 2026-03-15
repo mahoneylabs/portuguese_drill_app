@@ -2,10 +2,98 @@
 <html>
 
 <head>
-  <title>Portuguese Verb Trainer</title>
+
+<title>Portuguese Verb Trainer</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f7f7f7;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:40px;
+border-radius:12px;
+box-shadow:0 6px 18px rgba(0,0,0,0.1);
+text-align:center;
+width:500px;
+}
+
+h1{
+color:#58cc02;
+margin-bottom:10px;
+}
+
+button{
+background:#58cc02;
+color:white;
+border:none;
+padding:10px 18px;
+font-size:16px;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#46a302;
+}
+
+.conjugation-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+margin-top:20px;
+}
+
+.column{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+label{
+font-weight:bold;
+}
+
+input{
+padding:8px;
+font-size:14px;
+width:150px;
+border:2px solid #ddd;
+border-radius:6px;
+}
+
+input:focus{
+outline:none;
+border-color:#58cc02;
+}
+
+#result{
+margin-top:15px;
+font-weight:bold;
+}
+
+</style>
+
 </head>
 
 <body>
+
+<div class="container">
 
 <h1>Portuguese Verb Trainer</h1>
 
@@ -15,11 +103,53 @@
 
 <h3 id="translation"></h3>
 
-<input id="answer" placeholder="Type conjugation">
+<div class="conjugation-grid">
 
-<button onclick="checkAnswer()">Check Answer</button>
+<div class="column">
+
+<div class="row">
+<label>eu</label>
+<input id="eu">
+</div>
+
+<div class="row">
+<label>tu</label>
+<input id="tu">
+</div>
+
+<div class="row">
+<label>ele / ela / você</label>
+<input id="ele">
+</div>
+
+</div>
+
+<div class="column">
+
+<div class="row">
+<label>nós</label>
+<input id="nos">
+</div>
+
+<div class="row">
+<label>vós</label>
+<input id="vos">
+</div>
+
+<div class="row">
+<label>eles / elas / vocês</label>
+<input id="eles">
+</div>
+
+</div>
+
+</div>
+
+<button onclick="checkAnswer()">Check Answers</button>
 
 <p id="result"></p>
+
+</div>
 
 <script src="script.js"></script>
 
