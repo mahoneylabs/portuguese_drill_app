@@ -1,8 +1,5 @@
 let verbs = []
 let currentVerb
-let subject
-
-const subjects = ["eu","tu","ele","nos","vos","eles"]
 
 fetch("verbs.json")
 .then(response => response.json())
@@ -10,38 +7,102 @@ fetch("verbs.json")
 
 function newVerb(){
 
- currentVerb = verbs[Math.floor(Math.random()*verbs.length)]
+currentVerb = verbs[Math.floor(Math.random()*verbs.length)]
 
- subject = subjects[Math.floor(Math.random()*subjects.length)]
+document.getElementById("verb").innerText = currentVerb.verb
 
- document.getElementById("verb").innerText =
-   currentVerb.verb + " (" + subject + ")"
+document.getElementById("translation").innerText =
+"Translation: " + currentVerb.translation
 
- document.getElementById("translation").innerText =
-   "Translation: " + currentVerb.translation
+clearInputs()
 
- document.getElementById("answer").value = ""
+document.getElementById("result").innerText=""
 
- document.getElementById("result").innerText = ""
+document.getElementById("eu").focus()
 
+}
+
+function clearInputs(){
+
+let ids=["eu","tu","ele","nos","vos","eles"]
+
+ids.forEach(id=>{
+document.getElementById(id).value=""
+})
+
+}
+
+function normalize(text){
+return text.trim().toLowerCase()
 }
 
 function checkAnswer(){
 
- let answer = document.getElementById("answer").value.trim().toLowerCase()
+let score=0
 
- let correct = currentVerb[subject].toLowerCase()
+let answers={
+eu:document.getElementById("eu").value,
+tu:document.getElementById("tu").value,
+ele:document.getElementById("ele").value,
+nos:document.getElementById("nos").value,
+vos:document.getElementById("vos").value,
+eles:document.getElementById("eles").value
+}
 
- if(answer === correct){
+for(let subject in answers){
 
-   document.getElementById("result").innerText =
-   "✅ Correct!"
-
- } else {
-
-   document.getElementById("result").innerText =
-   "❌ Incorrect. Correct answer: " + currentVerb[subject]
-
- }
+if(normalize(answers[subject])===normalize(currentVerb[subject])){
+score++
+}
 
 }
+
+let resultText="Score: "+score+"/6"
+
+if(score<6){
+
+resultText+=" | Correct answers: "
+
+resultText+=
+"eu: "+currentVerb.eu+", "+
+"tu: "+currentVerb.tu+", "+
+"ele: "+currentVerb.ele+", "+
+"nós: "+currentVerb.nos+", "+
+"vós: "+currentVerb.vos+", "+
+"eles: "+currentVerb.eles
+
+}
+
+document.getElementById("result").innerText=resultText
+
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+
+let inputs=["eu","tu","ele","nos","vos","eles"]
+
+inputs.forEach((id,index)=>{
+
+document.getElementById(id).addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+
+e.preventDefault()
+
+if(index<inputs.length-1){
+
+document.getElementById(inputs[index+1]).focus()
+
+}else{
+
+checkAnswer()
+
+}
+
+}
+
+})
+
+})
+
+})
