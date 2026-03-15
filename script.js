@@ -10,11 +10,11 @@ function newVerb(){
 currentVerb = verbs[Math.floor(Math.random()*verbs.length)]
 
 document.getElementById("verb").innerText = currentVerb.verb
-
 document.getElementById("translation").innerText =
 "Translation: " + currentVerb.translation
 
 clearInputs()
+clearColors()
 
 document.getElementById("result").innerText=""
 
@@ -27,7 +27,21 @@ function clearInputs(){
 let ids=["eu","tu","ele","nos","vos","eles"]
 
 ids.forEach(id=>{
-document.getElementById(id).value=""
+let input=document.getElementById(id)
+input.value=""
+input.placeholder=""
+})
+
+}
+
+function clearColors(){
+
+let ids=["eu","tu","ele","nos","vos","eles"]
+
+ids.forEach(id=>{
+let input=document.getElementById(id)
+input.classList.remove("correct")
+input.classList.remove("incorrect")
 })
 
 }
@@ -40,40 +54,32 @@ function checkAnswer(){
 
 let score=0
 
-let answers={
-eu:document.getElementById("eu").value,
-tu:document.getElementById("tu").value,
-ele:document.getElementById("ele").value,
-nos:document.getElementById("nos").value,
-vos:document.getElementById("vos").value,
-eles:document.getElementById("eles").value
-}
+let ids=["eu","tu","ele","nos","vos","eles"]
 
-for(let subject in answers){
+ids.forEach(id=>{
 
-if(normalize(answers[subject])===normalize(currentVerb[subject])){
+let input=document.getElementById(id)
+let userAnswer=normalize(input.value)
+let correctAnswer=normalize(currentVerb[id])
+
+if(userAnswer===correctAnswer){
+
+input.classList.add("correct")
+input.classList.remove("incorrect")
 score++
-}
+
+}else{
+
+input.classList.add("incorrect")
+input.classList.remove("correct")
+
+input.placeholder=currentVerb[id]
 
 }
 
-let resultText="Score: "+score+"/6"
+})
 
-if(score<6){
-
-resultText+=" | Correct answers: "
-
-resultText+=
-"eu: "+currentVerb.eu+", "+
-"tu: "+currentVerb.tu+", "+
-"ele: "+currentVerb.ele+", "+
-"nós: "+currentVerb.nos+", "+
-"vós: "+currentVerb.vos+", "+
-"eles: "+currentVerb.eles
-
-}
-
-document.getElementById("result").innerText=resultText
+document.getElementById("result").innerText="Score: "+score+"/6"
 
 }
 
