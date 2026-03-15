@@ -22,7 +22,7 @@ padding:40px;
 border-radius:12px;
 box-shadow:0 6px 18px rgba(0,0,0,0.1);
 text-align:center;
-width:520px;
+width:540px;
 }
 
 h1{
@@ -60,27 +60,52 @@ gap:12px;
 .row{
 display:flex;
 align-items:center;
-justify-content:space-between;
+gap:10px;
 }
 
 label{
+width:120px;
 font-weight:bold;
+text-align:left;
 }
 
 input{
 padding:8px;
 font-size:14px;
-width:160px;
+width:130px;
 border:2px solid #ccc;
 border-radius:6px;
+}
+
+.correct{
+background:#d7ffd9;
+border-color:#58cc02;
+}
+
+.incorrect{
+background:#ffd9d9;
+border-color:#ff4b4b;
+}
+
+.result-icon{
+font-size:18px;
+width:20px;
+}
+
+.correct-answer{
+font-size:12px;
+color:#ff4b4b;
+margin-left:5px;
 }
 
 #result{
 margin-top:20px;
 font-weight:bold;
+font-size:18px;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -101,16 +126,22 @@ font-weight:bold;
 <div class="row">
 <label>eu</label>
 <input id="eu">
+<span id="eu-icon" class="result-icon"></span>
+<span id="eu-correct" class="correct-answer"></span>
 </div>
 
 <div class="row">
 <label>tu</label>
 <input id="tu">
+<span id="tu-icon" class="result-icon"></span>
+<span id="tu-correct" class="correct-answer"></span>
 </div>
 
 <div class="row">
 <label>ele / ela / você</label>
 <input id="ele">
+<span id="ele-icon" class="result-icon"></span>
+<span id="ele-correct" class="correct-answer"></span>
 </div>
 
 </div>
@@ -120,16 +151,22 @@ font-weight:bold;
 <div class="row">
 <label>nós</label>
 <input id="nos">
+<span id="nos-icon" class="result-icon"></span>
+<span id="nos-correct" class="correct-answer"></span>
 </div>
 
 <div class="row">
 <label>vós</label>
 <input id="vos">
+<span id="vos-icon" class="result-icon"></span>
+<span id="vos-correct" class="correct-answer"></span>
 </div>
 
 <div class="row">
 <label>eles / elas / vocês</label>
 <input id="eles">
+<span id="eles-icon" class="result-icon"></span>
+<span id="eles-correct" class="correct-answer"></span>
 </div>
 
 </div>
