@@ -2,7 +2,7 @@ let verbs = []
 let currentVerb
 
 fetch("verbs.json")
-.then(response => response.json())
+.then(res => res.json())
 .then(data => verbs = data)
 
 function newVerb(){
@@ -13,35 +13,25 @@ document.getElementById("verb").innerText = currentVerb.verb
 document.getElementById("translation").innerText =
 "Translation: " + currentVerb.translation
 
-clearInputs()
-clearColors()
-
-document.getElementById("result").innerText=""
+resetInputs()
 
 document.getElementById("eu").focus()
 
 }
 
-function clearInputs(){
+function resetInputs(){
 
 let ids=["eu","tu","ele","nos","vos","eles"]
 
 ids.forEach(id=>{
 let input=document.getElementById(id)
+
 input.value=""
 input.placeholder=""
-})
 
-}
+input.style.background="white"
+input.style.borderColor="#ccc"
 
-function clearColors(){
-
-let ids=["eu","tu","ele","nos","vos","eles"]
-
-ids.forEach(id=>{
-let input=document.getElementById(id)
-input.classList.remove("correct")
-input.classList.remove("incorrect")
 })
 
 }
@@ -52,26 +42,27 @@ return text.trim().toLowerCase()
 
 function checkAnswer(){
 
-let score=0
-
 let ids=["eu","tu","ele","nos","vos","eles"]
+let score=0
 
 ids.forEach(id=>{
 
 let input=document.getElementById(id)
+
 let userAnswer=normalize(input.value)
 let correctAnswer=normalize(currentVerb[id])
 
 if(userAnswer===correctAnswer){
 
-input.classList.add("correct")
-input.classList.remove("incorrect")
+input.style.background="#d7ffd9"
+input.style.borderColor="#58cc02"
+
 score++
 
 }else{
 
-input.classList.add("incorrect")
-input.classList.remove("correct")
+input.style.background="#ffd9d9"
+input.style.borderColor="#ff4b4b"
 
 input.placeholder=currentVerb[id]
 
@@ -83,11 +74,11 @@ document.getElementById("result").innerText="Score: "+score+"/6"
 
 }
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", () => {
 
-let inputs=["eu","tu","ele","nos","vos","eles"]
+let fields=["eu","tu","ele","nos","vos","eles"]
 
-inputs.forEach((id,index)=>{
+fields.forEach((id,index)=>{
 
 document.getElementById(id).addEventListener("keydown",function(e){
 
@@ -95,9 +86,9 @@ if(e.key==="Enter"){
 
 e.preventDefault()
 
-if(index<inputs.length-1){
+if(index<fields.length-1){
 
-document.getElementById(inputs[index+1]).focus()
+document.getElementById(fields[index+1]).focus()
 
 }else{
 
